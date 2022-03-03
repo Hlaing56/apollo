@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Wager } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -21,6 +21,13 @@ const resolvers = {
       }
     
       throw new AuthenticationError('Not logged in');
+    },
+    wagers: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Wager.find(params).sort({ createdAt: -1 });
+    },
+    wager: async (parent, { _id }) => {
+        return Wager.findOne({ _id });
     },
   },
   Mutation: {
@@ -45,7 +52,22 @@ const resolvers = {
     
       const token = signToken(user);
       return { token, user };
-    }
+    },
+    makeWager: async (parent, args, context) => {
+      if (context.user) {
+        const wager = await Wager.create({ ...args, username: context.user.username });
+    
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { Wagers: wager._id } },
+          { new: true }
+        );
+    
+        return wager;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
+    },
   }
 };
 

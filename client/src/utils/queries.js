@@ -19,3 +19,24 @@ export const QUERY_ME = gql`
         }
     }
 `;
+
+export const QUERY_WAGERS = gql`
+    query wagers {
+        wagers {
+        _id
+        wagerAmount
+        createdAt
+        username
+        }
+    }
+`;
+
+export const QUERY_WAGER = gql`
+    query wager($id: ID!) {
+        wager(_id: $id) {
+        wagerAmount
+        createdAt
+        username
+        }
+    }
+`;
