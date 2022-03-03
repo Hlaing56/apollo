@@ -23,7 +23,7 @@ const userSchema = new Schema(
     coins: {
       type: Number,
       required: false,
-      default: 50
+      default: 60
     },
     wagers: [
       {

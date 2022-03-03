@@ -25,3 +25,13 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const MAKE_WAGER = gql`
+  mutation makeWager($wagerAmount: String!) {
+    makeWager(wagerAmount: $wagerAmount) {
+      wagerAmount
+      createdAt
+      username
+    }
+  }
+`;

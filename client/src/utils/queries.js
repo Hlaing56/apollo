@@ -11,11 +11,16 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_ME = gql`
-    query me {
+    query Me {
         me {
-            _id
+          username
+          email
+          coins
+          wagers {
             username
-            email
+            createdAt
+            wagerAmount
+          }
         }
     }
 `;
