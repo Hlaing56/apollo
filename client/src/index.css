@@ -801,6 +801,11 @@ nav a:hover {
 }
 
 /* FLEX CONTENT */
+.flex-box {
+  display: flex;
+  flex-direction: column;
+}
+
 .flex-row {
   display: flex;
 }

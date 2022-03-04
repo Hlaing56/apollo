@@ -5,6 +5,11 @@ const Wagers = ({ wagers, title }) => {
     return <h3>No Wagers Yet</h3>;
   }
 
+  function getRandomInt() {
+    return Math.floor(Math.random() * 20);
+  }
+
+  
   return (
     <div>
       <h3>{title}</h3>
@@ -15,7 +20,9 @@ const Wagers = ({ wagers, title }) => {
               {wager.username} wager at {wager.createdAt}
             </p>
             <div className="card-body">
-              <p>{wager.wagerAmount}</p>
+              <p>amount:{wager.wagerAmount}|</p> 
+              {/* <button onClick={getRandomInt()}>Roll</button> */}
+              House: {getRandomInt()} | You: {getRandomInt()} 
             </div>
           </div>
         ))}

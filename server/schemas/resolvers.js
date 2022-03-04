@@ -60,9 +60,12 @@ const resolvers = {
       if (context.user) {
         const wager = await Wager.create({ ...args, username: context.user.username });
     
+
         await User.findByIdAndUpdate(
           { _id: context.user._id },
+          // {coins: context.user.coins},
           { $push: { wagers: wager._id } },
+          // { $push: wager.coins = wager.coins - wager.wagerAmount },
           { new: true }
         );
     
