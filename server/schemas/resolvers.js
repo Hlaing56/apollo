@@ -7,7 +7,7 @@ const resolvers = {
     users: async () => {
       return User.find()
         .select('-__v -password')
-        .populate('wagers');
+        .populate('wagers').sort({ coins: -1 });;
     },
     user: async (parent, { username }) => {
       return User.findOne({ username })
@@ -63,9 +63,9 @@ const resolvers = {
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
-          // {coins: context.user.coins},
-          { $push: { wagers: wager._id } },
-          // { $push: wager.coins = wager.coins - wager.wagerAmount },
+          { wagerAmount: context.user.wagerAmount },
+          { $push: { wagers: wager._id }},
+          { coins: wager.wagerAmount },       
           { new: true }
         );
     

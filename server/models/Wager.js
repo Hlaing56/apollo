@@ -16,6 +16,18 @@ const wagerSchema = new Schema(
       type: String,
       required: true
     },
+    house: {
+      type: Number,
+      get: function getRandomInt() {
+        return Math.floor(Math.random() * 21);
+      }
+    },
+    you: {
+      type: Number,
+      get: function getRandomInt() {
+        return Math.floor(Math.random() * 20);
+      }
+    },
   },
   {
     toJSON: {

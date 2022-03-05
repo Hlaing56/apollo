@@ -150,6 +150,8 @@ nav a:hover {
 .card-body {
   padding: 2.5%;
   font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
 }
 
 /* FORM */

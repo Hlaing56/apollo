@@ -7,6 +7,8 @@ const typeDefs = gql`
         wagerAmount: String
         createdAt: String
         username: String
+        house: String
+        you: String
     }
 
     type User {

@@ -1,11 +1,21 @@
 import { gql } from '@apollo/client';
 
+export const QUERY_USERS = gql`
+    query users {
+        users {
+        username
+        coins
+        }
+    }
+`;
+
 export const QUERY_USER = gql`
     query user($username: String!) {
         user(username: $username) {
             _id
             username
             email
+            coins
         }
     }
 `;
@@ -20,6 +30,8 @@ export const QUERY_ME = gql`
             username
             createdAt
             wagerAmount
+            house
+            you
           }
         }
     }
@@ -32,6 +44,8 @@ export const QUERY_WAGERS = gql`
         wagerAmount
         createdAt
         username
+        house
+        you
         }
     }
 `;
@@ -42,6 +56,8 @@ export const QUERY_WAGER = gql`
         wagerAmount
         createdAt
         username
+        house
+        you
         }
     }
 `;
