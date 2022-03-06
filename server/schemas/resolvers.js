@@ -1,6 +1,7 @@
 const { User, Wager } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
+const { houseNum, youNum } = require('../utils/ranNum');
 
 const resolvers = {
   Query: {
@@ -12,13 +13,13 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select('-__v -password')
-        .populate('wagers');
+        .populate('wagers').sort({ createdAt: -1 });
     },
     me: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
-          .populate('wagers');
+          .populate('wagers').sort({ createdAt: -1 });
   
         return userData;
       }
@@ -58,17 +59,26 @@ const resolvers = {
     },
     makeWager: async (parent, args, context) => {
       if (context.user) {
-        const wager = await Wager.create({ ...args, username: context.user.username });
-    
+        const hNum = houseNum();
 
-        await User.findByIdAndUpdate(
+        const yNum = youNum();
+
+        const wager = await Wager.create({ ...args, username: context.user.username, house: hNum, you: yNum });
+    
+        // const newAmount = 0;
+        // if (hNum > yNum){
+        //   newAmount = context.user.coins - wager.wagerAmount;
+        // } else if (hNum < yNum){
+        //   newAmount = context.user.coins + wager.wagerAmount;
+        // } else { 
+        //   newAmount = context.user.coins;
+        // };
+
+        await User.findByIdAndUpdate( 
           { _id: context.user._id },
-          { wagerAmount: context.user.wagerAmount },
-          { $push: { wagers: wager._id }},
-          { coins: wager.wagerAmount },       
+          { $push: { wagers: wager._id } , $set: { coins: wager.wagerAmount }},
           { new: true }
         );
-    
         return wager;
       }
     

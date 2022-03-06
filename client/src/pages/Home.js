@@ -26,7 +26,7 @@ const Home = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <Wager wagers={wagers} title="Wagers" />
+            <Wager wagers={wagers} title="Latest Wagers" />
           )}
         </div>
       </div>

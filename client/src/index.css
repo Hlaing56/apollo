@@ -6,7 +6,7 @@
   --light: #e1f5f4;
   --dark: #6c7575;
   --error: rgb(228, 46, 1);
-  --border-radius: 0.3rem;
+  --border-radius: 0.5rem;
   --spacing-one: calc(1rem * 0.25);
   --spacing-two: calc(1rem * 0.5);
   --spacing-three: 1rem;
@@ -21,6 +21,10 @@
 html,
 body {
   min-height: 100%;
+}
+
+.border {
+  border-radius: var(--border-radius);
 }
 
 body {
@@ -56,6 +60,8 @@ h2 {
 
 h3 {
   font-size: 1.75rem;
+  display: flex;
+  justify-content: center;
 }
 
 h4 {
@@ -115,7 +121,7 @@ nav a:hover {
   margin: 5px 0;
   border-radius: var(--border-radius);
   border: none;
-  color: var(--dark);
+  color: #ffffff;
   outline: none;
   background-color: var(--secondary);
   transition: all 0.5s;
@@ -799,7 +805,7 @@ nav a:hover {
 }
 
 .bg-dark {
-  background-color: var(--dark);
+  background-color: var(--secondary);
 }
 
 /* FLEX CONTENT */
@@ -810,6 +816,7 @@ nav a:hover {
 
 .flex-row {
   display: flex;
+  justify-content: center;
 }
 
 .flex-column {
@@ -1123,9 +1130,9 @@ nav a:hover {
     flex: 0 0 calc(100% * 7 / 12 - 0.5%);
   }
 
-  .col-lg-8 {
+  /* .col-lg-8 {
     flex: 0 0 calc(100% * 8 / 12 - 0.5%);
-  }
+  } */
 
   .col-lg-9 {
     flex: 0 0 calc(100% * 9 / 12 - 0.5%);

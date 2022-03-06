@@ -38,8 +38,8 @@ const Profile = () => {
   return (
     <div>
       <div className="flex-row mb-3">
-        <h2 className="bg-dark text-secondary p-3 display-inline-block">
-          Viewing {userParam ? `${user.username}'s` : 'your'} profile. coins:{user.coins}
+        <h2 className="bg-dark p-3 display-inline-block border">
+          Total coins left : {user.coins}
         </h2>
       </div>
 
@@ -47,7 +47,7 @@ const Profile = () => {
 
       <div className="flex-row justify-space-between mb-3">
         <div className="col-12 mb-3 col-lg-8">
-          <Wager wagers={user.wagers} title={`${user.username}'s wagers...`} />
+          <Wager wagers={user.wagers} title={`your past wagers`} />
         </div>
       </div>
     </div>

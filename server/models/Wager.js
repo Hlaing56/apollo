@@ -18,15 +18,11 @@ const wagerSchema = new Schema(
     },
     house: {
       type: Number,
-      get: function getRandomInt() {
-        return Math.floor(Math.random() * 21);
-      }
+      required: true
     },
     you: {
       type: Number,
-      get: function getRandomInt() {
-        return Math.floor(Math.random() * 20);
-      }
+      required: true
     },
   },
   {

@@ -7,7 +7,6 @@ const Users = ({ users, title }) => {
 
   return (
     <div>
-      <h3>{title}</h3>
       {users &&
         users.map(user => (
           <div key={user._id} className="card mb-3">
