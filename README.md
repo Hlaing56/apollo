@@ -33,8 +33,14 @@ user-focused MERN app where users can make profiles and wagers of their own.
 - Heroku
 - Authentication (JWT)
 - API protection
+- React.js
 
 ## Deployed Application
+![Screen Shot of homepage](https://user-images.githubusercontent.com/90152576/157319555-5702aaa5-8e74-4242-a7d2-094bbabf37f6.png)
+![Screen Shot of profile](https://user-images.githubusercontent.com/90152576/157319614-4654337b-2608-482d-a1f7-3f229eea80b3.png)
+![Screen Shot of stripe](https://user-images.githubusercontent.com/90152576/157319641-c613c0f1-b42a-4d4a-8f09-c7ed67260123.png)
+
+https://immense-bastion-87765.herokuapp.com/
 
 
 ## Process of making
