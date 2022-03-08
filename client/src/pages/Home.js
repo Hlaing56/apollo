@@ -16,7 +16,7 @@ const Home = () => {
 
   return (
     <main>
-      <div className="flex-box justify-space-between">
+      <div className="">
       {loggedIn && (
         <div className="col-12 mb-3">
           <WagerForm />

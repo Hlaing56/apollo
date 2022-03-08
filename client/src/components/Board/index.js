@@ -9,7 +9,7 @@ const Users = ({ users, title }) => {
     <div>
       {users &&
         users.map(user => (
-          <div key={user._id} className="card mb-3">
+          <div key={user._id} className="cardLead mb-3">
             <div className="card-body">
               {user.username} | Coins: {user.coins} 
             </div>

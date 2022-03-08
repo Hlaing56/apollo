@@ -8,6 +8,7 @@ const Wagers = ({ wagers, title }) => {
   return (
     <div>
       <h3>{title}</h3>
+      <div className='flex-row'>
       {wagers &&
         wagers.map(wager => (
           <div key={wager._id} className="card mb-3">
@@ -19,6 +20,8 @@ const Wagers = ({ wagers, title }) => {
             </div>
           </div>
         ))}
+      </div>
+      
     </div>
   );
 };

@@ -139,8 +139,14 @@ nav a:hover {
 
 /* CARDS */
 .card {
+  margin: 20px 0 0 0;
+  background-color: #a9a9a9;
+  color: #ffffff;
+  width: 40%;
+}
+
+.cardLead {
   margin: 0 0 20px 0;
-  border-radius: var(--border-radius);
   background-color: #a9a9a9;
   color: #ffffff;
 }
@@ -150,7 +156,8 @@ nav a:hover {
   margin: 0;
   background-color: #969696;
   padding: 0.625rem;
-  border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
+  display: flex;
+  justify-content: center;
 }
 
 .card-body {
@@ -816,7 +823,9 @@ nav a:hover {
 
 .flex-row {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .flex-column {
