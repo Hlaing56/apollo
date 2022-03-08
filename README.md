@@ -36,8 +36,10 @@ user-focused MERN app where users can make profiles and wagers of their own.
 - React.js
 
 ## Deployed Application
-![Screen Shot of homepage](https://user-images.githubusercontent.com/90152576/157319555-5702aaa5-8e74-4242-a7d2-094bbabf37f6.png)
-![Screen Shot of profile](https://user-images.githubusercontent.com/90152576/157319614-4654337b-2608-482d-a1f7-3f229eea80b3.png)
+![Screen Shot of homepage](https://user-images.githubusercontent.com/90152576/157339434-819e551a-0928-4769-9420-7febb47a416f.png)
+
+![Screen Shot of profile](https://user-images.githubusercontent.com/90152576/157339453-838ced6e-e634-47ea-9a08-eaaaebead4a8.png)
+
 ![Screen Shot of stripe](https://user-images.githubusercontent.com/90152576/157319641-c613c0f1-b42a-4d4a-8f09-c7ed67260123.png)
 
 https://immense-bastion-87765.herokuapp.com/
