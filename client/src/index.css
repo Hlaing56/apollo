@@ -160,6 +160,12 @@ nav a:hover {
   justify-content: center;
 }
 
+.cardLog {
+  margin: 20px 0 0 0;
+  background-color: #a9a9a9;
+  color: #ffffff;
+}
+
 .card-body {
   padding: 2.5%;
   font-size: 1.4rem;
