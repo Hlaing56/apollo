@@ -2,6 +2,7 @@ const { User, Wager } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 const { houseNum, youNum } = require('../utils/ranNum');
+const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
@@ -33,6 +34,38 @@ const resolvers = {
     wager: async (parent, { _id }) => {
         return Wager.findOne({ _id });
     },
+    checkout: async (parent, args, context) => {
+      const url = new URL(context.headers.referer).origin;
+      const line_items = [];
+
+      
+      const product = await stripe.products.create({
+        name: "100 Coins",
+        description: "100 more coins to give it another shot (limited to only once a week)"
+      });
+
+      const price = await stripe.prices.create({
+        product:  product.id,
+        unit_amount: 10 * 100,
+        currency: 'usd',
+      });
+
+      line_items.push({
+        price: price.id,
+        quantity: 1
+      });
+
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items,
+        mode: 'payment',
+        success_url: `${url}/profile`,
+        cancel_url: `${url}/`
+      });
+
+      return { session: session.id };
+
+    }
   },
   Mutation: {
     signUp: async (parent, args) => {

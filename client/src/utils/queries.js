@@ -61,3 +61,11 @@ export const QUERY_WAGER = gql`
         }
     }
 `;
+
+export const QUERY_CHECKOUT = gql`
+  query getCheckout {
+    checkout {
+      session
+    }
+  }
+`;

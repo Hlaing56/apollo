@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
+import { QUERY_CHECKOUT } from '../../utils/queries';
+import { loadStripe } from '@stripe/stripe-js';
+import { useLazyQuery } from '@apollo/client';
 
 const Header = () => {
 
@@ -8,6 +11,23 @@ const Header = () => {
     event.preventDefault();
     Auth.logout();
   };
+
+  const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
+  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+
+  useEffect(() => {
+    if (data) {
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: data.checkout.session });
+      });
+    }
+  }, [data]);
+
+  function submitCheckout() {
+    getCheckout();
+  }
+
 
   return (
     <header className="bg-secondary mb-4 flex-row align-center">
@@ -24,6 +44,9 @@ const Header = () => {
               <a href="/" onClick={logout}>
                 Logout
               </a>
+              <button onClick={submitCheckout}>
+                Refill
+              </button>
             </>
           ) : (
             <>

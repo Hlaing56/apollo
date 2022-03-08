@@ -25,6 +25,8 @@ const typeDefs = gql`
         user(username: String!): User
         wagers(username: String): [Wager]
         wager(_id: ID!): Wager
+        checkout: Checkout
+
     }
 
     type Mutation {
@@ -36,6 +38,10 @@ const typeDefs = gql`
     type Auth {
         token: ID!
         user: User
+    }
+
+    type Checkout {
+        session: ID
     }
 `;
 
