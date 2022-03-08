@@ -53,7 +53,7 @@ const WagerForm = () => {
       <form className="flex-row justify-center justify-space-between-md align-stretch" onSubmit={handleFormSubmit}>
       <label for="quantity">Betting Amount:</label>
         <input 
-        type="number" min="5" max="10" 
+        type="Number" min="5" 
         value={wagerAmount} onChange={handleChange}>
         </input>
         <button className="btn col-12 col-md-3" type="submit">

@@ -65,18 +65,21 @@ const resolvers = {
 
         const wager = await Wager.create({ ...args, username: context.user.username, house: hNum, you: yNum });
     
-        // const newAmount = 0;
-        // if (hNum > yNum){
-        //   newAmount = context.user.coins - wager.wagerAmount;
-        // } else if (hNum < yNum){
-        //   newAmount = context.user.coins + wager.wagerAmount;
-        // } else { 
-        //   newAmount = context.user.coins;
-        // };
+        const user = await User.findById(context.user._id);
+
+        var newAmount = 0;
+
+        if (hNum > yNum){
+          newAmount = user.coins - wager.wagerAmount;
+        } else if (hNum < yNum){
+          newAmount = user.coins + wager.wagerAmount;
+        } else { 
+          newAmount = user.coins;
+        };
 
         await User.findByIdAndUpdate( 
           { _id: context.user._id },
-          { $push: { wagers: wager._id } , $set: { coins: wager.wagerAmount }},
+          { $push: { wagers: wager._id }, $set: { coins: newAmount } },
           { new: true }
         );
         return wager;

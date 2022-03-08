@@ -4,7 +4,7 @@ const typeDefs = gql`
     
     type Wager {
         _id: ID
-        wagerAmount: String
+        wagerAmount: Int
         createdAt: String
         username: String
         house: Int
@@ -16,7 +16,7 @@ const typeDefs = gql`
         username: String
         email: String
         wagers: [Wager]
-        coins: String
+        coins: Int
     }
 
     type Query {
