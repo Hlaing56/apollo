@@ -145,6 +145,15 @@ nav a:hover {
   width: 40%;
 }
 
+.countdown {
+  display: flex;
+  justify-content: center;
+}
+
+.time {
+  margin: 15px;
+}
+
 .cardLead {
   margin: 0 0 20px 0;
   background-color: #a9a9a9;
